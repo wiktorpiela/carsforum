@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{user.username}} questions
+{% endblock title %}
+
+{% block content %}
+    
+    {% if my_questions %}
+        <ul>
+            {% for question in my_questions %}
+                <li>{{question.title}}, {{question.display_time}}, {{question.total_likes}} <a href="{% url 'forumapp:edit_question' question.id %}">edit</a> <a href="#">delete</a></li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <h1>You didn't ask any question so far!</h1>     
+    {% endif %}
+        
+{% endblock content %}
+    
+
+
+    

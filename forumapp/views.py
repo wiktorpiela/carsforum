@@ -3,6 +3,7 @@ from .models import Question, Answer
 from .forms import QuestionForm, AnswerForm
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     wall = Question.objects.order_by("-create_date")
@@ -26,6 +27,7 @@ def question_details(request, questionID):
 
     return render(request, "question_details.html", {"question":question, "answers":answers})
 
+@login_required
 def compose_new_question(request):
     if request.method == "GET":
         return render(request, "compose_new_question.html")
@@ -39,7 +41,8 @@ def compose_new_question(request):
         else:
             message = "Something went wrong, please try again!"
             return render(request, "compose_new_question.html", {"message":message})
-        
+
+@login_required    
 def add_answer(request, questionID):
     question = get_object_or_404(Question, pk=questionID)
     if request.method == "GET":
@@ -72,7 +75,28 @@ def add_answer(request, questionID):
         else:
             message = "Something went wrong, please try again!"
             return render(request, "add_answer.html", {"question":question, "message":message})
-                
+
+@login_required
+def show_my_questions(request):
+    my_questions = Question.objects.filter(user=request.user)
+    return render(request, "show_my_questions.html", {"my_questions":my_questions})
+
+@login_required
+def edit_question(request, questionID):
+    my_question = get_object_or_404(Question, pk=questionID, user=request.user)
+    form = QuestionForm(instance=my_question)
+    if request.method == "GET":
+        return render(request, "edit_question.html", {"my_question":my_question, "form":form})
+    else:
+        quest = QuestionForm(request.POST, request.FILES, instance=my_question)
+        if quest.is_valid():
+            quest.save()
+            return render("forumapp:show_my_questions")
+        else:
+            message = "Somethign went wrong, please try again."
+            return render(request, "edit_question.html", {"my_question":my_question, "form":form})
+
+
 
 
 
