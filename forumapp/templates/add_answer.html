@@ -6,7 +6,50 @@
 {% endblock title %}
 
 {% block content %}
-    {{question.title}}
+    <div class="add-answer">
+
+        <div class="question">
+
+            <h4>{{question.title}}</h4>
+            <p>Added: {{question.display_time}}</p>
+            <p>Author: {{question.user}}</p>
+            <p>Question's category: {{question.display_category_name}}</p> 
+            
+            {% if question.image %}
+                <img src="{{question.image.url}}" alt="pics">
+            {% endif %}
+                
+            <p>{{question.desc}}</p>
+        
+            {% if question.is_liked %}
+                <ion-icon name="thumbs-up"></ion-icon>
+            {% else %}
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+            {% endif %}
+
+        </div>
+
+        <div class="answer">
+            <h1>Your answer</h1>
+            <h3>{{message}}</h3>
+
+            <form action="{% url 'forumapp:add_answer' question.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <label for="id_desc">Type your answer</label>
+                <textarea name="desc" cols="40" rows="10" required="" id="id_desc"></textarea>
+
+                <label for="id_image">Add image</label>
+                <input type="file" name="image" accept="image/*" id="id_image">
+
+                <button type="submit">Release your answer</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
 {% endblock content %}
     
     
