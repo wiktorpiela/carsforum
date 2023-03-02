@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registration
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Fill below form and register your account!</h1>
+
+    {% if dontMatch %}
+        <h3>{{dontMatch}}</h3>
+    
+    {% elif emailError %}
+        <h3>{{emailError}}</h3>
+
+    {% elif passwordError %}
+        <h3>Below password requirement{{length|pluralize}} not satisfied:</h3>
+        <ul>
+            {% for excepion in passwordError %}
+                <li>{{excepion}}</li> 
+            {% endfor %}    
+        </ul>
+    
+    {% elif emailExist %}
+        <h3>{{emailExist}}</h3>
+
+    {% elif usernameExist%}
+        <h3>{{usernameExist}}</h3>
+
+    {% endif %}
+        
+    <form action="{% url 'accounts:register' %}" method="post">
+        {% csrf_token %}
+
+        <label for="id_username">Username</label>
+        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+
+        <label for="id_email">Email</label>
+        <input type="email" name="email" maxlength="150" autocapitalize="none" autocomplete="email" autofocus="" required="" id="id_email">
+
+        <label for="id_password1">Password</label>
+        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+
+        <label for="id_password2">Password confirmation</label>
+        <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+
+        <button type="submit">Register</button>
+
+    </form>
+
+{% endblock content %}
+    
+    

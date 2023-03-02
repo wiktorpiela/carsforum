@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{question.title}}
+{% endblock title %}
+
+{% block content %}
+
+    <h4>{{question.title}}</h4>
+    <p>Added: {{question.display_time}}</p>
+    <p>Author: {{question.user}}</p>
+    <p>Question's category: {{question.display_category_name}}</p> 
+    
+    {% if question.image %}
+        <img src="{{question.image.url}}" alt="pics">
+    {% endif %}
+        
+    <p>{{question.desc}}</p>
+
+    {% if question.is_liked %}
+        <ion-icon name="thumbs-up"></ion-icon>
+    {% else %}
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+    {% endif %}
+
+    {% if answers %}
+        <h1>Answers</h1>
+        {% for answer in answers %}
+            <p>{{answer.desc}}</p>
+            
+            {% if answer.image %}
+                <img src="{{answer.image.url}}" alt="pics">
+            {% endif %}
+            
+            {% if answer.is_liked %}
+                <ion-icon name="thumbs-up"></ion-icon>
+            {% else %}
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+            {% endif %}
+                   
+        {% endfor %}
+            
+    {% else %}
+        <h1>This question still doesn't have answers</h1> 
+    {% endif %}
+
+    <a href="{% url 'forumapp:add_answer' question.id %}">Answer this question!</a>
+        
+{% endblock content %}
+    

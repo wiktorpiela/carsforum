@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Log in
+{% endblock title %}
+    
+
+{% block content %}
+    <h1>Log in</h1>
+
+    {% if noUser %}
+        <h3>{{noUser}}</h3>
+
+    {% elif inactiveUser %}
+        <h3>{{inactiveUser}}</h3>
+
+    {% elif wrongPass%}
+        <h3>{{wrongPass}}</h3>
+        
+    {% endif %}
+        
+    <form action="{% url 'accounts:login_user' %}" method="post">
+        {% csrf_token %}
+
+        <label for="id_username">Username</label>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+
+        <label for="id_password">Password</label>
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+
+        <button type="submit">Log in</button>
+
+    </form>
+
+    <a href="{% url 'password_reset' %}">Forgot password</a>
+    
+{% endblock content %}
+    
