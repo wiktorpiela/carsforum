@@ -115,6 +115,16 @@ def like_question(request, questionID):
     return redirect("forumapp:question_details", questionID=questionID)
 
 @login_required
+def like_answer(request, answerID):
+    answer = get_object_or_404(Answer, pk=answerID)
+    isLiked = answer.likes.filter(id = request.user.id)
+    if isLiked:
+        answer.likes.remove(request.user)
+    else:
+        answer.likes.add(request.user)
+    return redirect("forumapp:question_details", questionID=answer.question.id)
+
+@login_required
 def liked_questions(request):
     likedQuestions = User.objects.prefetch_related('likes').get(pk=request.user.id).likes.all()
     return render(request, "liked_questions.html", {"likedQuestions":likedQuestions})

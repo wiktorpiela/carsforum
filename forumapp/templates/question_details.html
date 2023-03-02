@@ -33,9 +33,9 @@
             {% endif %}
             
             {% if answer.is_liked %}
-                <ion-icon name="thumbs-up"></ion-icon>
+                <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up"></ion-icon>{{answer.total_likes}}</a>
             {% else %}
-                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{answer.total_likes}}</a>
             {% endif %}
                    
         {% endfor %}
