@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 def home(request):
     wall = Question.objects.order_by("-create_date")
@@ -113,9 +114,25 @@ def like_question(request, questionID):
         question.likes.add(request.user)
     return redirect("forumapp:question_details", questionID=questionID)
 
+@login_required
 def liked_questions(request):
     likedQuestions = User.objects.prefetch_related('likes').get(pk=request.user.id).likes.all()
     return render(request, "liked_questions.html", {"likedQuestions":likedQuestions})
+
+def search(request):
+    keywords = request.POST.get("search").split(" ")
+    for word in keywords:
+        queryset = Question.objects.filter(
+            Q(title__icontains = word) | Q(desc__icontains = word)
+        )
+        try:
+            questions = questions | queryset
+        except UnboundLocalError:
+            questions = queryset
+
+    questions = questions.order_by("create_date")
+
+    return render(request, "filtered_questions.html", {"questions":questions})
     
 
 

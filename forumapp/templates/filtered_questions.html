@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Searching results
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Cars forum for drivers, mechanics and enthusiasts</h1>
+
+    {% if questions %}
+
+        {% for question in questions %}
+        <a href="{% url 'forumapp:question_details' question.id %}">
+            <h4>{{question.title}}</h4>
+            <p>{{question.create_date|date:'j E Y'}}</p>
+            <p>{{question.user}}</p>
+            <p>{{question.display_category_name}}</p> 
+            <p>{{question.desc|truncatechars:500}}</p>
+        </a>
+
+        {% endfor %}
+        
+    {% else %}
+        <h1>No results... to back to home page</h1>
+    {% endif %}
+    
+
+
+
+{% endblock content %}
+    
+
+    

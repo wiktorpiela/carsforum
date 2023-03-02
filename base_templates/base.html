@@ -12,9 +12,17 @@
         </title>
 </head>
 <body>
+
+    <form action="{% url 'forumapp:search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="Search by title and text...">
+        <button type="submit">Go!</button>
+        <a href="{% url 'forumapp:home' %}">Reset</a>
+    </form>
     
     {% block content %}
-        
+
+
     {% endblock content %}
         
 
