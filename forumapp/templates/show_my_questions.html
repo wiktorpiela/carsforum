@@ -9,7 +9,7 @@
     {% if my_questions %}
         <ul>
             {% for question in my_questions %}
-                <li>{{question.title}}, {{question.display_time}}, {{question.total_likes}} <a href="{% url 'forumapp:edit_question' question.id %}">edit</a> <a href="#">delete</a></li>
+                <li>{{question.title}}, {{question.display_time}}, {{question.total_likes}} <a href="{% url 'forumapp:edit_question' question.id %}">edit</a> <a href="{% url 'forumapp:delete_question' question.id %}">delete</a></li>
             {% endfor %}
         </ul>
 

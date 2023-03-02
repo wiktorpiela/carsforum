@@ -18,9 +18,9 @@
     <p>{{question.desc}}</p>
 
     {% if question.is_liked %}
-        <ion-icon name="thumbs-up"></ion-icon>
+        <a href="{% url 'forumapp:like_question' question.id %}"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</a>
     {% else %}
-        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <a href="{% url 'forumapp:like_question' question.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</a>
     {% endif %}
 
     {% if answers %}

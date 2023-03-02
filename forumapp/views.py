@@ -4,6 +4,7 @@ from .forms import QuestionForm, AnswerForm
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def home(request):
     wall = Question.objects.order_by("-create_date")
@@ -91,10 +92,31 @@ def edit_question(request, questionID):
         quest = QuestionForm(request.POST, request.FILES, instance=my_question)
         if quest.is_valid():
             quest.save()
-            return render("forumapp:show_my_questions")
+            return redirect("forumapp:show_my_questions")
         else:
             message = "Somethign went wrong, please try again."
             return render(request, "edit_question.html", {"my_question":my_question, "form":form})
+        
+@login_required
+def delete_question(request, questionID):
+    my_question = get_object_or_404(Question, pk=questionID, user=request.user)
+    my_question.delete()
+    return redirect("forumapp:show_my_questions")
+
+@login_required
+def like_question(request, questionID):
+    question = get_object_or_404(Question, pk=questionID)
+    isLiked = question.likes.filter(id = request.user.id)
+    if isLiked:
+        question.likes.remove(request.user)
+    else:
+        question.likes.add(request.user)
+    return redirect("forumapp:question_details", questionID=questionID)
+
+def liked_questions(request):
+    likedQuestions = User.objects.prefetch_related('likes').get(pk=request.user.id).likes.all()
+    return render(request, "liked_questions.html", {"likedQuestions":likedQuestions})
+    
 
 
 
