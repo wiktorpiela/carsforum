@@ -1,3 +1,156 @@
-*{
-    color: red;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
+
+html, body {
+    font-size: 10px;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 300;
+}
+
+/* --------------------------- */
+/* NAVIGATION */
+/* --------------------------- */
+
+
+nav img {
+    border-radius: 20%;
+    margin: 0.6rem 0;
+    margin-left: 3rem;
+}
+
+nav {
+    background-color: #58ce71;
+}
+
+.width-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.main-nav a{
+    color: black;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.main-nav a:hover{
+    color: rgb(83, 75, 75);
+}
+
+/* --------------------------- */
+/* REUSABLE */ 
+/* --------------------------- */
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.btn{
+    height: auto;
+    font-family: 'Source Sans Pro';
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 1.5rem;
+    width: 75%;
+}
+
+.btn-full {
+    background-color: #58ce71;
+    border-color: #58ce71;
+    color: black;
+    outline: none;
+}
+
+.btn:active{
+    border-style: outset;
+}
+
+.btn:hover{
+    background-color: #7fdb93;
+}
+
+/* --------------------------- */
+/* LOGIN REGISTER FORM */
+/* --------------------------- */
+
+.login-register{
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.login-register form{
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.login-register input[type='text'],
+.login-register input[type='email'],
+.login-register input[type='password']{
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    width: 300px;
+}
+
+.login-register input{
+    height: 2.75rem;
+    text-align: center;
+    font-family: 'Lato';
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.login-register a{
+    padding-top: 1.5rem;
+    font-size: 2rem;
+}
+
+.login-register-header{
+    padding-top: 1.5rem;
+    font-weight: 200;
+    font-size: 1.8rem;
+    font-family: 'Source Sans Pro';
+}
+
+.login-register-message{
+    padding-top: 1.5rem;
+    font-size: 1.5rem;
+    color: rgb(204, 80, 42);
+}
+
+.login-register form label{
+    font-size: 2rem;
+}
+
+.login-register form button{
+    font-size: 2rem;
+}
+
+

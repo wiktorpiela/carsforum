@@ -6,30 +6,36 @@
 
 {% block content %}
 
-    <h1>Fill below form and register your account!</h1>
+<div class="login-register">
 
-    {% if dontMatch %}
+    <div class="login-register-header">
+        <h1>Register your account</h1>
+    </div>
+
+    <div class="login-register-message">
+        {% if dontMatch %}
         <h3>{{dontMatch}}</h3>
     
-    {% elif emailError %}
-        <h3>{{emailError}}</h3>
+        {% elif emailError %}
+            <h3>{{emailError}}</h3>
 
-    {% elif passwordError %}
-        <h3>Below password requirement{{length|pluralize}} not satisfied:</h3>
-        <ul>
-            {% for excepion in passwordError %}
-                <li>{{excepion}}</li> 
-            {% endfor %}    
-        </ul>
-    
-    {% elif emailExist %}
-        <h3>{{emailExist}}</h3>
-
-    {% elif usernameExist%}
-        <h3>{{usernameExist}}</h3>
-
-    {% endif %}
+        {% elif passwordError %}
+            <h3>Below password requirement{{length|pluralize}} not satisfied:</h3>
+            <ul>
+                {% for excepion in passwordError %}
+                    <li>{{excepion}}</li> 
+                {% endfor %}    
+            </ul>
         
+        {% elif emailExist %}
+            <h3>{{emailExist}}</h3>
+
+        {% elif usernameExist%}
+            <h3>{{usernameExist}}</h3>
+
+        {% endif %}
+    </div>
+
     <form action="{% url 'accounts:register' %}" method="post">
         {% csrf_token %}
 
@@ -45,9 +51,15 @@
         <label for="id_password2">Password confirmation</label>
         <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
 
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-full">Register</button>
 
     </form>
+
+    <a href="{% url 'accounts:login_user' %}">Already registered? Log in</a>
+
+</div>
+
+
 
 {% endblock content %}
     
