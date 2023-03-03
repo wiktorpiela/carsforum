@@ -23,8 +23,8 @@
             <a href="{% url 'forumapp:home' %}"><img src="{% static 'css/img/samochodzik.jpg' %}" alt="logo" width="70" height="60"></a>
             <form action="{% url 'forumapp:search' %}" method="post">
                 {% csrf_token %}
-                <input type="text" name="search" placeholder="Search by title and text...">
-                <button type="submit">Go!</button>
+                <input type="text" name="search" placeholder="Search by title and text..." required>
+                <button type="submit" class>Go!</button>
                 <a href="{% url 'forumapp:home' %}">Reset</a>
             </form>
         

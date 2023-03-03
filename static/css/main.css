@@ -48,12 +48,48 @@ nav {
 
 .main-nav a{
     color: black;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .main-nav a:hover{
     color: rgb(83, 75, 75);
+}
+
+.width-wrapper form button,
+.width-wrapper form a{
+    margin-left: 1rem;
+    height: auto;
+}
+
+.width-wrapper form input[type='text']{
+    height: auto;
+    text-align: center;
+    font-family: 'Source Sans Pro';
+    font-size: 2rem;
+    font-weight: 300;
+    align-items: baseline;
+}
+
+.width-wrapper form button,
+.width-wrapper form a{
+    background-color: #58ce71;
+    border-radius: 20%;
+    font-size: 1.75rem;
+    padding: 0.3rem;
+    border-top: 1.5px solid black;
+    border-right: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+    border-left: 1.5px solid black;
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    color: black;
+}
+
+.width-wrapper form button:hover,
+.width-wrapper form a:hover{
+    color: rgb(65, 62, 62);
+    border-color: rgb(65, 62, 62);
 }
 
 /* --------------------------- */
@@ -122,7 +158,7 @@ nav {
 .login-register input{
     height: 2.75rem;
     text-align: center;
-    font-family: 'Lato';
+    font-family: 'Source Sans Pro';
     font-size: 2rem;
     font-weight: 300;
 }
@@ -137,6 +173,7 @@ nav {
     font-weight: 200;
     font-size: 1.8rem;
     font-family: 'Source Sans Pro';
+    text-align: center;
 }
 
 .login-register-message{
@@ -153,4 +190,9 @@ nav {
     font-size: 2rem;
 }
 
-
+/* --------------------------- */
+/* WALL questions */
+/* --------------------------- */
+.single-question{
+    margin-top: 1.5rem;
+}
