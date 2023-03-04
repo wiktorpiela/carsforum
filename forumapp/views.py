@@ -9,6 +9,11 @@ from django.db.models import Q
 
 def home(request):
     wall = Question.objects.order_by("-create_date")
+    for question in wall:
+        if question.user == request.user:
+            question.is_your_question = True
+        else:
+            question.is_your_question = False
     return render(request, "home.html", {"wall": wall})
 
 def question_details(request, questionID):

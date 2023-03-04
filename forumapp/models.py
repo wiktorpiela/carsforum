@@ -30,6 +30,9 @@ class Question(models.Model):
     def total_likes(self):
         return self.likes.count()
     
+    def total_answers(self):
+        return self.answers.count()
+    
     def display_category_name(self):
         for short, long in self.categories:
             if short == self.category:
@@ -79,9 +82,7 @@ class Question(models.Model):
                 return f"{years} year ago"
             else:
                 return f"{years} years ago"   
-            
-    
-            
+                   
 class Answer(models.Model):
     desc = models.TextField()
     image = models.ImageField(upload_to = "images/", blank=True)
