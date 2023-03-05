@@ -10,9 +10,22 @@
     {% if likedQuestions %}
         <ul>
             {% for question in likedQuestions %}
-                <li>{{question.title}}, {{question.user}}, {{question.total_likes}}</li>
+                {% if question.is_your_question %}
+                    <li>
+                        <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}, {{question.user}}, {{question.total_likes}} </a>
+                        <a href="{% url 'forumapp:edit_question' question.id %}">edit</a>
+                        <a href="{% url 'forumapp:delete_question' question.id %}">delete</a>
+                    </li> 
+                {% else %}
+                    <li>
+                        <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}, {{question.user}}, {{question.total_likes}}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
-        </ul> 
+        </ul>
+        
+    {% else %}
+        <h1>You dont't have favorite questions yet!</h1>
     
     {% endif %}
     

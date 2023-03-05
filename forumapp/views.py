@@ -132,6 +132,11 @@ def like_answer(request, answerID):
 @login_required
 def liked_questions(request):
     likedQuestions = User.objects.prefetch_related('likes').get(pk=request.user.id).likes.all()
+    for question in likedQuestions:
+        if question.user == request.user:
+            question.is_your_question = True
+        else:
+            question.is_your_question = False
     return render(request, "liked_questions.html", {"likedQuestions":likedQuestions})
 
 def search(request):
