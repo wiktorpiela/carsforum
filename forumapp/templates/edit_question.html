@@ -22,10 +22,7 @@
     
             {% if my_question.image %}
                 <label for="id_image">Image</label>
-                <label>Currently</label>
-                <a href="{{my_question.image.url}}">Your image</a>
-                <input type="checkbox" name="image-clear" id="image-clear_id">
-                <label for="image-clear_id">Clear</label>
+                <a href="{{my_question.image.url}}" class="your-image">Your image</a>
                 <label for="id_image">Change</label>   
                 <input type="file" name="image" accept="image/*" id="id_image">
             {% endif %}
@@ -47,7 +44,7 @@
                     
               </select>
     
-            <button type="submit">Update</button>
+            <button type="submit" class="btn btn-full">Update</button>
     
         </form>
         

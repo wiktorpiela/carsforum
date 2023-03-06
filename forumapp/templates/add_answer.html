@@ -8,41 +8,46 @@
 {% block content %}
     <div class="add-answer">
 
-        <div class="question">
+        <div class="question-details">
 
-            <h4>{{question.title}}</h4>
-            <p>Added: {{question.display_time}}</p>
-            <p>Author: {{question.user}}</p>
-            <p>Question's category: {{question.display_category_name}}</p> 
-            
+            <div class="quest-txt">
+                <h4>{{question.title}}</h4>
+                <p>{{question.display_category_name}}</p>
+                <p>Added by {{question.user}} {{question.display_time}}</p>
+                <i>{{question.desc}}</i>
+
+                <div class="quest-icons">
+                    {% if question.is_liked %}
+                        <p class="wall-icons"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</p>
+                    {% else %}
+                        <p class="wall-icons"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
             {% if question.image %}
-                <img src="{{question.image.url}}" alt="pics">
-            {% endif %}
-                
-            <p>{{question.desc}}</p>
-        
-            {% if question.is_liked %}
-                <ion-icon name="thumbs-up"></ion-icon>
-            {% else %}
-                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <div class="quest-img">
+                    <img src="{{question.image.url}}" alt="pics">
+                </div>
             {% endif %}
 
         </div>
 
-        <div class="answer">
+        <div class="form-row">
             <h1>Your answer</h1>
             <h3>{{message}}</h3>
 
             <form action="{% url 'forumapp:add_answer' question.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <label for="id_desc">Type your answer</label>
+                <label for="id_desc">Type your answer here</label>
                 <textarea name="desc" cols="40" rows="10" required="" id="id_desc"></textarea>
 
                 <label for="id_image">Add image</label>
                 <input type="file" name="image" accept="image/*" id="id_image">
 
-                <button type="submit">Release your answer</button>
+                <button type="submit" class="btn btn-full">Release</button>
 
             </form>
 

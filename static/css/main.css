@@ -31,7 +31,7 @@ nav img {
 }
 
 nav {
-    background-color: #58ce71
+    background-color: #58ce71;
 }
 
 .width-wrapper form input[type='text']{
@@ -354,6 +354,7 @@ label {
 
 .form-row button{
     margin-top: 1.5rem;
+    margin-bottom: 2rem;
     height: 2.5rem;
     width: 100px;
 }
@@ -362,6 +363,32 @@ label {
     background-color: #58ce71;
     width: 150px;
 }
+
+.form-row a{
+    font-size: 2rem;
+    color: #58ce71;
+}
+
+/* MY QUESTIONS LIST */
+.collection-list{
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 2.5rem;
+}
+
+.collection-list-row{
+    margin-bottom: 1rem;
+    background-color: #e1ebef;
+    padding: 1.5rem;
+}
+
+.special-btn{
+    padding: 0.5rem;
+}
+
 
 
 

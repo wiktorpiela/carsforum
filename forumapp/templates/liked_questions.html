@@ -7,27 +7,38 @@
 
 {% block content %}
 
-    {% if likedQuestions %}
+    <div class="collection-list">
+        {% if likedQuestions %}
         <ul>
             {% for question in likedQuestions %}
-                {% if question.is_your_question %}
+                <div class="collection-list-row">
+                    {% if question.is_your_question %}
                     <li>
-                        <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}, {{question.user}}, {{question.total_likes}} </a>
-                        <a href="{% url 'forumapp:edit_question' question.id %}">edit</a>
-                        <a href="{% url 'forumapp:delete_question' question.id %}">delete</a>
+                        <div>
+                            <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}</a>
+                        </div>
+                        <div>
+                            <a href="{% url 'forumapp:edit_question' question.id %}" class="btn btn-full special-btn">edit</a>
+                            <a href="{% url 'forumapp:delete_question' question.id %}" class="btn btn-full special-btn">delete</a>
+                        </div>
+                        
                     </li> 
-                {% else %}
-                    <li>
-                        <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}, {{question.user}}, {{question.total_likes}}</a>
-                    </li>
-                {% endif %}
+                    {% else %}
+                        <li>
+                            <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}} by {{question.user}}</a>
+                        </li>
+                    {% endif %}
+                </div>
             {% endfor %}
         </ul>
         
-    {% else %}
-        <h1>You dont't have favorite questions yet!</h1>
-    
-    {% endif %}
+        {% else %}
+            <h1>You dont't have favorite questions yet!</h1>
+        {% endif %}
+
+    </div>
+
+
     
    
 {% endblock content %}
