@@ -6,45 +6,75 @@
 
 {% block content %}
 
-    <h4>{{question.title}}</h4>
-    <p>Added: {{question.display_time}}</p>
-    <p>Author: {{question.user}}</p>
-    <p>Question's category: {{question.display_category_name}}</p> 
-    
-    {% if question.image %}
-        <img src="{{question.image.url}}" alt="pics">
-    {% endif %}
-        
-    <p>{{question.desc}}</p>
+    <div class="question-details">
 
-    {% if question.is_liked %}
-        <a href="{% url 'forumapp:like_question' question.id %}"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</a>
-    {% else %}
-        <a href="{% url 'forumapp:like_question' question.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</a>
-    {% endif %}
+        <div class="quest-txt">
+            <h4>{{question.title}}</h4>
+            <p>{{question.display_category_name}}</p> 
+            <p>Added by {{question.user}} on {{question.create_date|date:'j E Y'}}, {{question.display_time}}</p>
 
-    {% if answers %}
-        <h1>Answers</h1>
+            <i>{{question.desc}}</i>
+
+            <div class="quest-icons">
+                {% if question.is_liked %}
+                    <a href="{% url 'forumapp:like_question' question.id %}"><p class="wall-icons"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</p></a>
+                {% else %}
+                    <a href="{% url 'forumapp:like_question' question.id %}"><p class="wall-icons"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</p></a>
+                {% endif %}
+                <a href="{% url 'forumapp:add_answer' question.id %}"><ion-icon name="chatbox"></ion-icon> Comment</a>
+            </div>
+
+
+        </div>
+
+        {% if question.image %}
+            <div class="quest-img">
+                <img src="{{question.image.url}}" alt="pics">
+            </div>
+        {% endif %}
+            
+    </div>
+
+    <div class="question-details-answers">
+
+        {% if answers %}
+
+            <h1>Answers</h1>
+
         {% for answer in answers %}
-            <p>{{answer.desc}}</p>
-            
+
+        <div class="single-answer">
+
+            <div class="answer-content">
+                <p>{{answer.user}}, {{answer.create_date|date:'j E Y'}}</p>
+                <i>{{answer.desc}}</i>
+
+                <div class="answer-like">
+                    {% if answer.is_liked %}
+                        <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up"></ion-icon>{{answer.total_likes}}</a>
+                    {% else %}
+                        <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{answer.total_likes}}</a>
+                    {% endif %}
+                </div>
+
+            </div>
+
             {% if answer.image %}
-                <img src="{{answer.image.url}}" alt="pics">
+                <div class="answer-img">
+                    <img src="{{answer.image.url}}" alt="pics">
+                </div>
+                
             {% endif %}
             
-            {% if answer.is_liked %}
-                <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up"></ion-icon>{{answer.total_likes}}</a>
-            {% else %}
-                <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{answer.total_likes}}</a>
-            {% endif %}
-                   
+        </div>
+         
         {% endfor %}
             
-    {% else %}
-        <h1>This question still doesn't have answers</h1> 
-    {% endif %}
+        {% else %}
+            <h1>This question still doesn't have answers</h1> 
+        {% endif %}
 
-    <a href="{% url 'forumapp:add_answer' question.id %}">Answer this question!</a>
-        
+    </div>
+  
 {% endblock content %}
     

@@ -31,13 +31,21 @@ nav img {
 }
 
 nav {
-    background-color: #58ce71;
+    background-color: #58ce71
+}
+
+.width-wrapper form input[type='text']{
+    width: 200px;
+    border: none;
+    margin: 0 auto;
+    border:solid 1px #ccc;
 }
 
 .width-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
 }
 
 .main-nav {
@@ -193,13 +201,111 @@ nav {
 /* --------------------------- */
 /* WALL questions */
 /* --------------------------- */
-.single-question{
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    width: 750px;
-    margin: 0 auto;
-}
-
 .single-question h4{
     font-size: 2.5rem;
 }
+
+.single-question{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e1ebef;
+    width: 750px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+}
+
+.single-question p{
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.login-register-header{
+    margin-bottom: 2rem;
+}
+
+.wall-icons{
+    color: #58ce71;
+}
+
+/* SINGLE QUESTION VIEW */
+.question-details h4{
+    font-size: 4.5rem;
+}
+
+.question-details h6{
+    font-size: 2.5rem;
+}
+
+.question-details p{
+    font-size: 1.5rem;
+}
+
+.question-details{
+    background-color: #e1ebef;
+    margin: 1.5rem 1.5rem;
+    padding: 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quest-txt i{
+    font-size: 2.25rem;
+    margin-top: 2rem;
+}
+
+.quest-img{
+    padding-left: 3rem;
+}
+
+.quest-icons a,
+.quest-icons p{
+    color: #58ce71;
+    font-size: 2.25rem;
+    margin-right: 2rem;
+}
+
+.quest-icons{
+    display: flex;
+}
+
+.question-details-answers h1{
+    font-size: 4.5rem;
+    margin: 1.5rem 0rem;
+    padding: 2rem 2rem;
+}
+
+.single-answer{
+    background-color: #e1ebef;
+    margin-bottom: 2rem;
+    margin: 1.5rem 1.5rem;
+    padding: 2rem 2rem; 
+}
+
+.single-answer p{
+    font-size: 1.5rem;
+}
+
+.single-answer i{
+    font-size: 2.25rem;
+    margin-top: 1.5rem;
+}
+
+.answer-content a{
+    color: #58ce71;
+    font-size: 2rem;
+}
+
+.answer-like{
+    margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+

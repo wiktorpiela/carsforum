@@ -6,21 +6,36 @@
 
 {% block content %}
 
-    <h1>Cars forum for drivers, mechanics and enthusiasts</h1>
+    <div class="login-register-header">
+        <h1>Cars forum for drivers, mechanics and enthusiasts</h1>
+    </div>
 
     {% if questions %}
 
         {% for question in questions %}
-        <a href="{% url 'forumapp:question_details' question.id %}">
-            <h4>{{question.title}}</h4>
-            <p>{{question.create_date|date:'j E Y'}}</p>
-            <p>{{question.user}}</p>
-            <p>{{question.display_category_name}}</p> 
-            <p>{{question.desc|truncatechars:500}}</p>
-        </a>
+
+            <div class="single-question">
+                <div class="info-text">
+                    <a href="{% url 'forumapp:question_details' question.id %}">
+                        <h4>{{question.title}}</h4>
+                        <p>{{question.display_category_name}}</p>
+                        <p>Added by {{question.user}}, {{question.display_time}}</p>
+                        <p class="wall-icons"><ion-icon name="chatbox"></ion-icon> {{question.total_answers}} <ion-icon name="thumbs-up"></ion-icon> {{question.total_likes}}</p>
+                    </a>
+                </div>
+
+                {% if question.image %}
+                    <div class="info-image">
+                        <a href="{% url 'forumapp:question_details' question.id %}">
+                            <img src="{{question.image.url}}" alt="pics" height="100">
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
 
         {% endfor %}
-        
+ 
     {% else %}
         <h1>No results... to back to home page</h1>
     {% endif %}
@@ -29,6 +44,6 @@
 
 
 {% endblock content %}
-    
+
 
     
