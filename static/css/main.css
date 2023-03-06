@@ -301,6 +301,68 @@ nav {
     margin-top: 1rem;
 }
 
+/* FORM ROW */
+.form-row {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.form-row form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row input,
+.form-row textarea {
+    width: 100%;
+}
+
+label {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.form-row input[type='text'],
+.form-row textarea {
+    height: 3.5rem;
+    border: none;
+    box-shadow: 0 0 24px 2px #ddd;
+    margin-bottom: 2rem;
+    padding: 0.3rem 1rem;
+    font-size: 2.2rem;
+    font-weight: 300;
+    font-family: 'Lato';
+    transition: all 0.3s;
+}
+
+.form-row textarea {
+    height: 20rem;
+}
+
+.form-row input[type='text']::placeholder,
+.form-row textarea::placeholder {
+    color: #aaa;
+}
+
+.form-row input[type='text']:focus,
+.form-row textarea:focus {
+    outline: none;
+    box-shadow: 0 0 27px 2px #ccc;
+}
+
+.form-row button{
+    margin-top: 1.5rem;
+    height: 2.5rem;
+    width: 100px;
+}
+
+#id_category{
+    background-color: #58ce71;
+    width: 150px;
+}
+
 
 
 
