@@ -101,15 +101,14 @@ nav {
 }
 
 /* dropdown navbar menu */
-.main-nav li ul li{
+
+/* .main-nav li ul li{
     display: none;
 }
 
 .main-nav li:hover ul li{
     display: block;
-}
-
-
+} */
 
 
 /* --------------------------- */
@@ -209,6 +208,13 @@ nav {
 .login-register form button{
     font-size: 2rem;
 }
+
+.login-register-header p{
+    padding-top: 1.5rem;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
 
 /* --------------------------- */
 /* WALL questions */
