@@ -63,22 +63,19 @@ def add_answer(request, questionID):
             new_answer.question = question
             new_answer.save()
 
-            if question.user != request.user:
-                email = EmailMessage(
-                    f"Your question '{question.title}' has been asnwered by {request.user.username}",
-                    f"""Congratulations, <br>
-                    {request.user.username} has just added the answer to your question!
-                    Content of the response:
-                    {new_answer.desc} <br>
-                    Best regards, Cars Forum""",
-                    settings.DEFAULT_FROM_EMAIL,
-                    [author_email])
-                email.content_subtype = "html"
-                email.send()
-                return redirect("forumapp:question_details", questionID=question.id)
-            else:
-                return redirect("forumapp:question_details", questionID=question.id)
-    
+            email = EmailMessage(
+                f"Your question '{question.title}' has been asnwered by {request.user.username}",
+                f"""Congratulations, <br>
+                {request.user.username} has just added the answer to your question!
+                Content of the response:
+                {new_answer.desc} <br>
+                Best regards, Cars Forum""",
+                settings.DEFAULT_FROM_EMAIL,
+                [author_email])
+            email.content_subtype = "html"
+            email.send()
+            return redirect("forumapp:question_details", questionID=question.id)
+        
         else:
             message = "Something went wrong, please try again!"
             return render(request, "add_answer.html", {"question":question, "message":message})
