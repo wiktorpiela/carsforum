@@ -35,7 +35,7 @@ def register(request):
                     else:
                         form = RegistrationForm(request.POST)
                         inactiveUser = send_verification_email(request, form)
-                        return redirect("forumapp:home")
+                        return redirect("accounts:registration_done")
                         
                 else:
                     error = "Email is not correct.Try again!"
@@ -43,6 +43,9 @@ def register(request):
         else:
             message = "Passwords don't match. Try again!"
             return render(request,"register.html",{"dontMatch":message})
+        
+def registration_done(request):
+    return render(request, "registration_done.html")
         
 def login_user(request):
     if request.method == "GET":
