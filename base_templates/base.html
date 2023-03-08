@@ -18,41 +18,58 @@
         </title>
 </head>
 <body>
-    <nav>
-        <div class="width-wrapper row">
-            <a href="{% url 'forumapp:home' %}"><img src="{% static 'css/img/samochodzik.jpg' %}" alt="logo" width="70" height="60"></a>
-            <form action="{% url 'forumapp:search' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="search" placeholder="Search by title and text..." required>
-                <button type="submit" class>Go!</button>
-                <a href="{% url 'forumapp:home' %}">Reset</a>
-            </form>
+
+    <div class="navbar">
+        <a href="{% url 'forumapp:home' %}"><img src="{% static 'css/img/samochodzik.jpg' %}" alt="logo" width="70" height="60"></a>
+
+        <form action="{% url 'forumapp:search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search by title and text..." required>
+            <button type="submit" class>Go!</button>
+            <a href="{% url 'forumapp:home' %}">Reset</a>
+        </form>
+
         
-            <ul class="main-nav">
-                {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
-                    <li><a href="{% url 'forumapp:compose_new_question' %}">Create new question</a></li>
-                    <li><a href="{% url 'forumapp:show_my_questions' %}">My questions</a></li>
-                    <li><a href="{% url 'forumapp:liked_questions' %}">Favorite questions</a></li>
-                    <li><a href="{% url 'accounts:logout_user' %}">Log out</a></li>
+            <a href="{% url 'forumapp:compose_new_question' %}">Create new question</a>
 
-                    <!-- <li>
-                        <a href="#">Questions manager</a>
-                        <ul>
-                            <li><a href="{% url 'forumapp:compose_new_question' %}">Create new question</a></li>
-                            <li><a href="{% url 'forumapp:show_my_questions' %}">My questions</a></li>
-                            <li><a href="{% url 'forumapp:liked_questions' %}">Favorite questions</a></li>
-                        </ul>
-                    </li> -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                Control panel
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    
+                    <a href="{% url 'forumapp:show_my_questions' %}">My questions</a>
+                    <a href="{% url 'forumapp:liked_questions' %}">Favorite questions</a>
+                </div>
+            </div>
 
+            <div class="dropdown">
+                <button class="dropbtn">
+                Questions by category
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'forumapp:compose_new_question' %}">Create new question</a>
+                    <a href="{% url 'forumapp:show_my_questions' %}">My questions</a>
+                    <a href="{% url 'forumapp:liked_questions' %}">Favorite questions</a>
+                </div>
+            </div>
+            
+            <a href="{% url 'accounts:logout_user' %}">Log out</a>
 
-                {% else %}
-                    <li><a href="{% url 'accounts:register' %}">Register</a></li>
-                    <li><a href="{% url 'accounts:login_user' %}">Log in</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+        {% else %}
+
+            <a href="{% url 'accounts:register' %}">Register</a>
+            <a href="{% url 'accounts:login_user' %}">Log in</a>
+
+        {% endif %}
+        
+    </div>
+
+    
     <div class="row">
         {% block content %}
 

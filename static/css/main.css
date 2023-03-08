@@ -6,7 +6,7 @@
 
 html, body {
     font-size: 10px;
-    font-family: 'Source Sans Pro';
+    font-family: 'Arial';
     font-weight: 400;
 }
 
@@ -23,98 +23,122 @@ a {
 /* NAVIGATION */
 /* --------------------------- */
 
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background-color: #58ce71;
+    font-family: Arial;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
 
-nav img {
+.navbar form{
+    display: flex;
+    align-items: center;
+}
+
+.navbar form button,
+.navbar form a {
+    background-color: #58ce71;
+    font-size: 1.75rem;
+    padding: 0.35rem;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    font-family: 'Arial';
+    font-weight: 300;
+    color: black;
+    margin-right: 1.5rem;
+}
+
+.navbar form button:hover,
+.navbar form a:hover{
+    color: white;
+    background-color: black;
+}
+
+.navbar form input[type='text']{
+    height: 3rem;
+    padding: 0.35rem;
+    margin-right: 1.5rem;
+    width: 250px;
+}
+
+.navbar img{
     border-radius: 20%;
     margin: 0.6rem 0;
     margin-left: 3rem;
 }
 
-nav {
-    background-color: #58ce71;
-}
-
-.width-wrapper form input[type='text']{
-    width: 200px;
-    border: none;
-    margin: 0 auto;
-    border:solid 1px #ccc;
-}
-
-.width-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.main-nav {
-    display: flex;
+/* Links inside the navbar */
+.navbar a {
+    float: left;
     font-size: 2rem;
-    text-transform: uppercase;
-}
-
-.main-nav a{
-    color: black;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-.main-nav a:hover{
-    color: rgb(83, 75, 75);
-}
-
-.width-wrapper form button,
-.width-wrapper form a{
-    margin-left: 1rem;
-    height: auto;
-}
-
-.width-wrapper form input[type='text']{
-    height: auto;
+    color: white;
     text-align: center;
-    font-family: 'Source Sans Pro';
+    padding: 0.15rem;
+    text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
     font-size: 2rem;
-    font-weight: 300;
-    align-items: baseline;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
 }
 
-.width-wrapper form button,
-.width-wrapper form a{
-    background-color: #58ce71;
-    border-radius: 20%;
-    font-size: 1.75rem;
-    padding: 0.3rem;
-    border-top: 1.5px solid black;
-    border-right: 1.5px solid black;
-    border-bottom: 1.5px solid black;
-    border-left: 1.5px solid black;
-    font-family: 'Source Sans Pro';
-    font-weight: 300;
-    color: black;
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+    color: darkblue;
 }
 
-.width-wrapper form button:hover,
-.width-wrapper form a:hover{
-    color: rgb(65, 62, 62);
-    border-color: rgb(65, 62, 62);
-}
-
-/* dropdown navbar menu */
-
-/* .main-nav li ul li{
+/* Dropdown content (hidden by default) */
+.dropdown-content {
     display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-.main-nav li:hover ul li{
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
-} */
+    text-align: left;
+}
 
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* --------------------------- */
 /* REUSABLE */ 
 /* --------------------------- */
-
 .row {
     max-width: 1140px;
     margin: 0 auto;
@@ -122,7 +146,7 @@ nav {
 
 .btn{
     height: auto;
-    font-family: 'Source Sans Pro';
+    font-family: 'Arial';
     border-radius: 5px;
     font-weight: 300;
     font-size: 1.5rem;
@@ -177,7 +201,7 @@ nav {
 .login-register input{
     height: 2.75rem;
     text-align: center;
-    font-family: 'Source Sans Pro';
+    font-family: 'Arial';
     font-size: 2rem;
     font-weight: 300;
 }
@@ -191,7 +215,7 @@ nav {
     padding-top: 1.5rem;
     font-weight: 200;
     font-size: 1.8rem;
-    font-family: 'Source Sans Pro';
+    font-family: 'Arial';
     text-align: center;
 }
 
@@ -214,7 +238,6 @@ nav {
     font-weight: 400;
     font-size: 2rem;
 }
-
 
 /* --------------------------- */
 /* WALL questions */
@@ -361,7 +384,7 @@ label {
     padding: 0.3rem 1rem;
     font-size: 2.2rem;
     font-weight: 300;
-    font-family: 'Lato';
+    font-family: 'Arial';
     transition: all 0.3s;
 }
 
@@ -416,6 +439,19 @@ label {
 .special-btn{
     padding: 0.5rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
