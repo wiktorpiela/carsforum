@@ -52,9 +52,11 @@
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="{% url 'forumapp:compose_new_question' %}">Create new question</a>
-                    <a href="{% url 'forumapp:show_my_questions' %}">My questions</a>
-                    <a href="{% url 'forumapp:liked_questions' %}">Favorite questions</a>
+                    <a href="{% url 'forumapp:questions_by_category' 'F1' %}">F1</a>
+                    <a href="{% url 'forumapp:questions_by_category' 'NA' %}">NASCAR</a>
+                    <a href="{% url 'forumapp:questions_by_category' 'TR' %}">Engines</a>
+                    <a href="{% url 'forumapp:questions_by_category' 'EN' %}">Trucks</a>
+                    <a href="{% url 'forumapp:questions_by_category' 'MU' %}">Muscle cars</a>
                 </div>
             </div>
             

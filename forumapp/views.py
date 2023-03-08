@@ -150,6 +150,22 @@ def search(request):
     questions = questions.order_by("create_date")
 
     return render(request, "filtered_questions.html", {"questions":questions})
+
+def questions_by_category(request, questionCat):
+    questions = Question.objects.filter(category=questionCat)
+    all_categories = Question.categories
+    for short, long in all_categories:
+        if short == questionCat:
+            categoryName = long
+            break
+    if len(questions)==0:
+        message = f"No questions related to {categoryName} category found"
+        return render(request, "questions_by_category.html", {"noQuestions":message})
+    else:
+        single_question = questions[0]
+        return render(request, "questions_by_category.html", {"single_question":single_question,
+                                                              "questions":questions})
+
     
 
 

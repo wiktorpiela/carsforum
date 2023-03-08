@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+    {% if single_question %}
+        {{single_question.display_category_name}} questions
+    {% else %}
+         No related questions
+    {% endif %}
+        
+{% endblock title %}
+    
+{% block content %}
+
+    {% if questions %}
+        <div class="login-register-header">
+            <h1>{{single_question.display_category_name}} questions</h1>
+        </div>
+        
+        {% for question in questions %}
+
+            <div class="single-question">
+                <div class="info-text">
+                    <a href="{% url 'forumapp:question_details' question.id %}">
+                        <h4>{{question.title}}</h4>
+                        <p>{{question.display_category_name}}</p>
+                        <p>Added by {{question.user}}, {{question.display_time}}</p>
+                        <p class="wall-icons"><ion-icon name="chatbox"></ion-icon> {{question.total_answers}} <ion-icon name="thumbs-up"></ion-icon> {{question.total_likes}}</p>
+                    </a>
+                </div>
+
+                {% if question.image %}
+                    <div class="info-image">
+                        <a href="{% url 'forumapp:question_details' question.id %}">
+                            <img src="{{question.image.url}}" alt="pics" height="100">
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
+            
+        {% endfor %}
+
+    {% else %}
+        <div class="login-register-header">
+            <h1>{{noQuestions}}</h1>
+        </div>
+        
+            
+    {% endif %}
+    
+    
+{% endblock content %}
+    
