@@ -32,6 +32,12 @@ def question_details(request, questionID):
         else:
             answer.is_liked = False
 
+    for answer in answers:
+        if answer.user == request.user:
+            answer.is_your_answer = True
+        else:
+            answer.is_your_answer = False
+
     return render(request, "question_details.html", {"question":question, "answers":answers})
 
 @login_required
@@ -165,7 +171,31 @@ def questions_by_category(request, questionCat):
         single_question = questions[0]
         return render(request, "questions_by_category.html", {"single_question":single_question,
                                                               "questions":questions})
+    
+@login_required
+def edit_answer(request, answerID, questionID):
+    question = get_object_or_404(Question, pk=questionID)
+    answer = get_object_or_404(Answer, pk=answerID, user=request.user)
+    form = AnswerForm(instance=answer)
+    if request.method == "GET":
+        return render(request, "edit_answer.html", {"question":question,
+                                                    "answer":answer})
+    else:
+        ans = AnswerForm(request.POST, request.FILES, instance=answer)
+        if ans.is_valid():
+            ans.save()
+            return redirect("forumapp:question_details", questionID=questionID)
+        else:
+            message = "Something went wrong, please try again!"
+            return render(request, "edit_answer.html", {"question":question,
+                                                        "answer":answer,
+                                                        "message":message})
 
+@login_required
+def delete_answer(request, answerID, questionID):
+    answer = get_object_or_404(Answer, pk=answerID, user=request.user)
+    answer.delete()
+    return redirect("forumapp:question_details", questionID = questionID)
     
 
 

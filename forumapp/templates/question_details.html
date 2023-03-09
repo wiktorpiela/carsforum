@@ -54,6 +54,12 @@
                     {% else %}
                         <a href="{% url 'forumapp:like_answer' answer.id %}"><ion-icon name="thumbs-up-outline"></ion-icon>{{answer.total_likes}}</a>
                     {% endif %}
+
+                    {% if answer.is_your_answer %}
+                        <a href="{% url 'forumapp:edit_answer' question.id answer.id %}">Edit</a>
+                        <a href="{% url 'forumapp:delete_answer' question.id answer.id %}">Delete</a>
+                    {% endif %}
+
                 </div>
 
             </div>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editing your answer
+{% endblock title %}
+
+{% block content %}
+
+    <div class="add-answer">
+
+        <div class="question-details">
+
+            <div class="quest-txt">
+                <h4>{{question.title}}</h4>
+                <p>{{question.display_category_name}}</p>
+                <p>Added by {{question.user}} {{question.display_time}}</p>
+                <i>{{question.desc}}</i>
+
+                <div class="quest-icons">
+                    {% if question.is_liked %}
+                        <p class="wall-icons"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</p>
+                    {% else %}
+                        <p class="wall-icons"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            {% if question.image %}
+                <div class="quest-img">
+                    <img src="{{question.image.url}}" alt="pics">
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div class="form-row">
+
+            <h1>Answer editing</h1>
+            <h3>{{message}}</h3>
+
+            <form action="{% url 'forumapp:edit_answer' question.id answer.id %}" method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <label for="id_desc">Answer content</label>
+                <textarea name="desc" cols="40" rows="10" required="" id="id_desc">{{answer.desc}}</textarea>
+
+                {% if answer.image %}
+                    <label for="id_image">Image</label>
+                    <a href="{{answer.image.url}}">Current image</a>
+                    <input type="file" name="image" accept="image/*" id="id_image">
+                {% else %}
+                    <label for="id_image">Image</label>
+                    <input type="file" name="image" accept="image/*" id="id_image">
+                {% endif %}
+                
+                <button type="submit" class="btn btn-full">Update</button>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+    
+    
