@@ -88,6 +88,7 @@ a {
 .dropdown {
     float: left;
     overflow: hidden;
+    margin-right: 2rem;
 }
 
 /* Dropdown button */
@@ -135,6 +136,15 @@ a {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.main-nav{
+    display: flex;
+    font-weight: 300;
+}
+
+.navbar-link-component{
+    margin-right: 2rem;
 }
 
 /* --------------------------- */
@@ -440,26 +450,4 @@ label {
 .special-btn{
     padding: 0.5rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
