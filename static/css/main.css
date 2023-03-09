@@ -65,7 +65,8 @@ a {
     height: 3rem;
     padding: 0.35rem;
     margin-right: 1.5rem;
-    width: 250px;
+    width: 400px;
+    font-size: 2rem;
 }
 
 .navbar img{
