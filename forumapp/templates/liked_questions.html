@@ -22,6 +22,7 @@
                             <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}}</a>
                         </div>
                         <div>
+                            <a href="{% url 'forumapp:like_question' question.id %}" class="btn btn-full special-btn">dislike</a>
                             <a href="{% url 'forumapp:edit_question' question.id %}" class="btn btn-full special-btn">edit</a>
                             <a href="{% url 'forumapp:delete_question' question.id %}" class="btn btn-full special-btn">delete</a>
                         </div>
@@ -29,7 +30,14 @@
                     </li> 
                     {% else %}
                         <li>
-                            <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}} by {{question.user}}</a>
+
+                            <div>
+                                <a href="{% url 'forumapp:question_details' question.id %}">{{question.title}} by {{question.user}}</a>
+                            </div>
+                            <div>
+                                <a href="{% url 'forumapp:like_question' question.id %}" class="btn btn-full special-btn">dislike</a>
+                            </div>
+                        
                         </li>
                     {% endif %}
                 </div>
@@ -37,7 +45,9 @@
         </ul>
         
         {% else %}
+
             <h1>You dont't have favorite questions yet!</h1>
+            
         {% endif %}
 
     </div>
