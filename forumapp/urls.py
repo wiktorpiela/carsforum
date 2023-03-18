@@ -14,6 +14,7 @@ urlpatterns = [
     path("details/<int:questionID>/like-question/", views.like_question, name="like_question"),
     path("like-answer/<int:answerID>/", views.like_answer, name="like_answer"),
     path("show-my-questions/", views.show_my_questions, name="show_my_questions"),
+    path("show-my-answers/", views.show_my_answers, name="show_my_answers"),
     path("show-my-questions/<int:questionID>/edit-question/", views.edit_question, name="edit_question"),
     path("show-my-questions/<int:questionID>/delete-question/", views.delete_question, name="delete_question"),
     path("questions-by-category/<str:questionCat>/", views.questions_by_category, name="questions_by_category"),

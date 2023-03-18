@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    My answers
+{% endblock title %}
+    
+{% block content %}
+    
+<div class="login-register-header">
+    <h1>Your answers</h1>
+</div>
+
+<div class="collection-list">
+    {% if my_answers %}
+    <ul>
+        {% for answer in my_answers %}
+        <div class="collection-list-row">
+            <li>
+                <div>
+                    <a href="{% url 'forumapp:question_details' answer.question.id %}">
+                        <div>For question: {{answer.question.title}} XXX ago</div>
+                        <div>Content: {{answer.desc|truncatechars:20}}</div>  
+                    </a>
+                </div> 
+                <div>
+                    <a href="{% url 'forumapp:edit_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">edit</a>
+                    <a href="{% url 'forumapp:delete_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">delete</a>
+                </div>
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+        <h1>You didn't ask any answers so far!</h1>     
+    {% endif %}
+
+</div>
+
+
+{% endblock content %}
+    

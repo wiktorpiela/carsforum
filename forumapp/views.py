@@ -197,8 +197,7 @@ def delete_answer(request, answerID, questionID):
     answer.delete()
     return redirect("forumapp:question_details", questionID = questionID)
     
-
-
-
-
-
+@login_required
+def show_my_answers(request):
+    my_answers = Answer.objects.filter(user = request.user)
+    return render(request, "show_my_answers.html", {"my_answers":my_answers})
