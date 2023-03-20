@@ -201,3 +201,13 @@ def delete_answer(request, answerID, questionID):
 def show_my_answers(request):
     my_answers = Answer.objects.filter(user = request.user)
     return render(request, "show_my_answers.html", {"my_answers":my_answers})
+
+@login_required
+def liked_answers(request):
+    likedAnswers = User.objects.prefetch_related("answerLikes").get(pk=request.user.id).answerLikes.all()
+    for answer in likedAnswers:
+        if answer.user == request.user:
+            answer.is_your_answer = True
+        else:
+            answer.is_your_answer = False
+    return render(request, "liked_answers.html", {"likedAnswers":likedAnswers})

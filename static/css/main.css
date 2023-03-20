@@ -180,6 +180,11 @@ a {
     background-color: #7fdb93;
 }
 
+.no-content-message{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 /* --------------------------- */
 /* LOGIN REGISTER FORM */
 /* --------------------------- */

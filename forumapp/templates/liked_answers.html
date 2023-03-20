@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Favorite answers
+{% endblock title %}
+    
+
+{% block content %}
+
+    <div class="login-register-header">
+        <h1>Favorite answers</h1>
+    </div>
+
+    <div class="collection-list">
+        {% if likedAnswers %}
+        <ul>
+            {% for answer in likedAnswers %}
+                <div class="collection-list-row">
+                    {% if answer.is_your_answer %}
+                    <li>
+                        <div>
+                            <a href="{% url 'forumapp:question_details' answer.question.id %}">
+                                <div>For question: {{answer.question.title}} XXX ago</div>
+                                <div>Content: {{answer.desc|truncatechars:20}}</div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{% url 'forumapp:like_answer' answer.id %}" class="btn btn-full special-btn">dislike</a>
+                            <a href="{% url 'forumapp:edit_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">edit</a>
+                            <a href="{% url 'forumapp:delete_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">delete</a>
+                        </div>
+                        
+                    </li> 
+                    {% else %}
+                        <li>
+
+                            <div>
+                                <a href="{% url 'forumapp:question_details' answer.question.id %}">
+                                    <div>For question: {{answer.question.title}} XXX ago</div>
+                                    <div>Content: {{answer.desc|truncatechars:20}}</div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="{% url 'forumapp:like_answer' answer.id %}" class="btn btn-full special-btn">dislike</a>
+                            </div>
+                        
+                        </li>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+        
+        {% else %}
+        
+            <div class="no-content-message">
+                <h1>You dont't have favorite answers yet!</h1>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock content %}
+    

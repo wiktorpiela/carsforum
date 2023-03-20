@@ -92,7 +92,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answers")
 
     def __str__(self):
-        return f"{self.title}, {self.user}, {self.create_date}"
+        return f"{self.question.title}, {self.user}, {self.create_date}"
     
     def total_likes(self):
         return self.likes.count()
