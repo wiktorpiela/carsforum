@@ -180,9 +180,11 @@ a {
     background-color: #7fdb93;
 }
 
-.no-content-message{
-    font-size: 1.5rem;
+.no-content-message,
+.count-content-message{
+    font-size: 1.25rem;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 /* --------------------------- */
@@ -325,6 +327,12 @@ a {
 
 .quest-img{
     padding-left: 3rem;
+    height: 100%;
+}
+
+.answer-img{
+    height: 100%;
+    width: 100%;
 }
 
 .quest-icons a,
@@ -349,6 +357,8 @@ a {
     margin-bottom: 2rem;
     margin: 1.5rem 1.5rem;
     padding: 2rem 2rem; 
+    display: flex;
+    justify-content: space-between;
 }
 
 .single-answer p{

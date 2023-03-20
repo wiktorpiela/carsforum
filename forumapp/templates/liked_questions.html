@@ -13,6 +13,9 @@
 
     <div class="collection-list">
         {% if likedQuestions %}
+        <div class="count-content-message">
+            <h1>You have {{likedQuestions.count}} favorite question{{likedQuestions.count|pluralize}}</h1>
+        </div>
         <ul>
             {% for question in likedQuestions %}
                 <div class="collection-list-row">
