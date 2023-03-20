@@ -330,9 +330,8 @@ a {
     height: 100%;
 }
 
-.answer-img{
-    height: 100%;
-    width: 100%;
+.answer-img img{
+    max-width: 100%;
 }
 
 .quest-icons a,

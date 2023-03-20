@@ -28,7 +28,11 @@
 
         {% if question.image %}
             <div class="quest-img">
-                <img src="{{question.image.url}}" alt="pics">
+                <div>
+                    <a href="{{question.image.url}}">
+                        <img src="{{question.image.url}}" alt="pics">
+                    </a>
+                </div>
             </div>
         {% endif %}
             
@@ -66,7 +70,10 @@
 
             {% if answer.image %}
                 <div class="answer-img">
-                    <img src="{{answer.image.url}}" alt="pics">
+                    <a href="{{answer.image.url}}">
+                        <img src="{{answer.image.url}}" alt="pics">
+                    </a>
+                    
                 </div>
                 
             {% endif %}
