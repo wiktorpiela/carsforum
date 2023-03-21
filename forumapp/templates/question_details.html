@@ -17,9 +17,9 @@
 
             <div class="quest-icons">
                 {% if question.is_liked %}
-                    <a href="{% url 'forumapp:like_question' question.id %}"><p class="wall-icons"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</p></a>
+                    <a href="{% url 'forumapp:like_question' question.id 'questDetailsPage' %}"><p class="wall-icons"><ion-icon name="thumbs-up"></ion-icon>{{question.total_likes}}</p></a>
                 {% else %}
-                    <a href="{% url 'forumapp:like_question' question.id %}"><p class="wall-icons"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</p></a>
+                    <a href="{% url 'forumapp:like_question' question.id 'questDetailsPage' %}"><p class="wall-icons"><ion-icon name="thumbs-up-outline"></ion-icon>{{question.total_likes}}</p></a>
                 {% endif %}
                 <a href="{% url 'forumapp:add_answer' question.id %}"><ion-icon name="chatbox"></ion-icon> Comment</a>
             </div>

@@ -113,14 +113,19 @@ def delete_question(request, questionID):
     return redirect("forumapp:show_my_questions")
 
 @login_required
-def like_question(request, questionID):
+def like_question(request, questionID, pageLocation):
     question = get_object_or_404(Question, pk=questionID)
     isLiked = question.likes.filter(id = request.user.id)
+    print(pageLocation)
     if isLiked:
         question.likes.remove(request.user)
     else:
         question.likes.add(request.user)
-    return redirect("forumapp:question_details", questionID=questionID)
+    
+    if pageLocation == "questDetailsPage":
+        return redirect("forumapp:question_details", questionID=questionID)
+    elif pageLocation == "favList":
+        return redirect("forumapp:liked_questions")
 
 @login_required
 def like_answer(request, answerID):
