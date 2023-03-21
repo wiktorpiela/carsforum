@@ -19,5 +19,23 @@
         width: 6rem;
     }
 
+    .navbar button{
+        font-size: 175rem;
+    }
+
+    .question-details,
+    .question-details-answers{
+        margin: 2rem 7rem;
+    }
+
+    .quest-txt h4,
+    .question-details-answers h1{
+        font-size: 3rem;
+    }
+}
+
+/* ipad mini */
+/* 768px - 1023px <=1023px */
+@media only screen and (max-width: 1023px) {
 
 }
