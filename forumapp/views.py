@@ -24,7 +24,7 @@ def question_details(request, questionID):
     else:
         question.is_liked = False
 
-    answers = Answer.objects.filter(question=question.id)
+    answers = Answer.objects.filter(question=question.id).order_by("-create_date")
 
     for answer in answers:
         if answer.likes.filter(id=request.user.id).exists():
