@@ -28,7 +28,7 @@
                             </a>
                         </div>
                         <div>
-                            <a href="{% url 'forumapp:like_answer' answer.id %}" class="btn btn-full special-btn">dislike</a>
+                            <a href="{% url 'forumapp:like_answer' answer.id 'favList' %}" class="btn btn-full special-btn">dislike</a>
                             <a href="{% url 'forumapp:edit_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">edit</a>
                             <a href="{% url 'forumapp:delete_answer' answer.question.id answer.id %}" class="btn btn-full special-btn">delete</a>
                         </div>
@@ -44,7 +44,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{% url 'forumapp:like_answer' answer.id %}" class="btn btn-full special-btn">dislike</a>
+                                <a href="{% url 'forumapp:like_answer' answer.id 'favList' %}" class="btn btn-full special-btn">dislike</a>
                             </div>
                         
                         </li>
