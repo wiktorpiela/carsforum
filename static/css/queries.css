@@ -1,0 +1,23 @@
+/* big tablets and small notebooks */
+/* 1024px - 1200px <=1200px */
+@media only screen and (max-width: 1200px){
+
+    .navbar form input[type='text']{
+        width: 25rem;
+        font-size: 1.5rem;
+    }
+
+    .navbar a{
+        font-size: 1.75rem;
+    }
+
+    .navbar img{
+        border-radius: 20%;
+        margin: 1rem 1rem;
+        margin-left: 3rem;
+        height: 5rem;
+        width: 6rem;
+    }
+
+
+}
