@@ -30,6 +30,12 @@
             <a href="{% url 'forumapp:home' %}">Reset</a>
         </form>
 
+        <div class="mobile-adj">
+            <a class="nav-burger">
+                <ion-icon name="menu-outline" class="nav-burger-icon"></ion-icon>
+            </a>
+        </div>
+
         <div class="main-nav">
 
             {% if user.is_authenticated %}

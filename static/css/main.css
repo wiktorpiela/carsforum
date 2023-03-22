@@ -148,6 +148,11 @@ a {
     margin-right: 2rem;
 }
 
+/* MOBILe NAV */
+.nav-burger {
+    display: none;
+}
+
 /* --------------------------- */
 /* REUSABLE */ 
 /* --------------------------- */
@@ -271,7 +276,7 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: #e1ebef;
-    width: 750px;
+    width: 75rem;
     margin: 0 auto;
     margin-bottom: 2rem;
     padding: 1.5rem 2rem;
